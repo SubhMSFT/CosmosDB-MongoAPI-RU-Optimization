@@ -5,21 +5,21 @@ Optimizing Azure Cosmos DB API for MongoDB Query RU Consumption by virtue of Ind
 
 The Azure Cosmos DB API for MongoDB makes it easy to use Microsoft's premier NoSQL database, Azure Cosmos DB as if it were a MongoDB database. You can leverage your MongoDB experience and continue to use your favorite MongoDB drivers, SDKs, and tools by pointing your application to the API for MongoDB account's connection string. Visit [here](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-introduction) for getting started with Azure Cosmos DB API for MongoDB.
 
-**How do I find the request unit charge for operations executed in Azure Cosmos DB API for MongoDB**
+## How do I find the request unit charge for operations executed in Azure Cosmos DB API for MongoDB
 
 You can use the [Azure portal](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/find-request-unit-charge-mongodb#use-the-azure-portal), [MongoDB .NET driver](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/find-request-unit-charge-mongodb#use-the-mongodb-net-driver), [MongoDB Java driver](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/find-request-unit-charge-mongodb#use-the-mongodb-java-driver) & [MongoDB Node.js driver](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/find-request-unit-charge-mongodb#use-the-mongodb-nodejs-driver).
 
-**If my Query is using too many RUs, where do I look for optimizing my RU Consumption**
+## If my Query is using too many RUs, where do I look for optimizing my RU Consumption
 There are a couple of places you should look at as documented here.
 
-The starting place is $explain command.
+The starting place is **$explain** command.
 ```
 db.coll.find({foodGroup: "Baby Foods"}).explain({"executionStatistics": true })
 ```
 
 If your Query's RU is too high, then you should investigate further to understand whether you've correctly set Indexes for the Collection. As explained here in this document.
 
-**Example process:**
+## Example process
 - *Step1:* Use this [QuickStart](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/create-mongodb-dotnet) to build a .NET Web API using Azure Cosmos DB's API for MongoDB. Then load the sample data using [mongoimport](https://docs.mongodb.com/database-tools/mongoimport/#mongodb-binary-bin.mongoimport), a CLI tool that easily imports small amounts of JSON, CSV, or TSV data.
 ```
 mongoimport --host <HOST>:<PORT> -u <USERNAME> -p <PASSWORD> --db cosmicworks --collection products --ssl --jsonArray --writeConcern="{w:0}" --file Data/products.json
@@ -62,7 +62,7 @@ _id, CategoryName, Description  | 7.25
 _id, CategoryName.$**  | 6.27
 _id, CategoryName.$**, Description.$**  | 3.15
 
-**Types of Indexes**:
+## Types of Indexes
 Azure Cosmos DB's API for MongoDB supports three types of Indexes:
   1. **[Single Field](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-indexing#single-field)** Indexes, supported creating using the Azure portal.
   2. **[Wildcard](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-indexing#wildcard-indexes)** Indexes, supported creating using Azure portal. Check this link for limitations of creating Wildcard indexes 
@@ -82,5 +82,23 @@ db.products.createIndex({CategoryName:1,Description:1})
 db.products.createIndex({Description:1})
 ```
 
-**Summary**:
+## Summary
 This document showcases how you could optimize Query RU consumption in Azure Cosmos DB's API for MongoDB.
+  
+## Links for Further Study
+1. Querying Azure Cosmos DB's API for MongoDB - Basic Querying > https://www.youtube.com/watch?v=tVk8S7lFWMA
+2. Indexing best practices (with demos) for Azure Cosmos DB API for MongoDB > https://www.youtube.com/watch?v=qHFVwvfqZMA
+3. Larest updates in Azure Cosmos DB API for MongoDB and Best Practices - Ignite2019 Event > https://www.youtube.com/watch?v=w7d5BAlHGoI&t=2011s
+4. Intro: Azure Cosmos DB Data Indexing - Best Practices for Optimal Query Performance > https://www.youtube.com/watch?v=bscs9GAnSqM
+
+## Feedback
+You can share any feedback at: sugh AT microsoft dot com
+
+## License & Terms of Use
+This is a free white paper released into the public domain. Anyone is free to use or distribute this white paper, for any purpose, commercial or non-commercial, and by any means. Same applies to the code in the repo.
+
+THE WHITE PAPER IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE WHITE PAPER.
+
+Have fun!
