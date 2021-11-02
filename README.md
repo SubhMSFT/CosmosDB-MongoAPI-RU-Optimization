@@ -54,7 +54,7 @@ This generates the output of 1 document which costs: 3.15 RUs.
   
 In short, we have been able to successfully bring down Query RU consumption from 20 RUs to 3 RUs, just by tweaking Single Field & Wildcard Indexes.
 
-What is Indexing   | RU
+Which Indexes have been Used?   | RU
 ------------- | -------------
 _id  | 20.05
 _id, CategoryName  | 7.32
@@ -62,7 +62,7 @@ _id, CategoryName, Description  | 7.25
 _id, CategoryName  | 7.32
 _id, CategoryName.$**  | 6.27
 _id, CategoryName.$**, Description.$**  | 3.15
-   
+
 **Types of Indexes**:
 Azure Cosmos DB's API for MongoDB supports three types of Indexes:
   1. **[Single Field]**(https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-indexing#single-field) Indexes, supported creating using the Azure portal.
@@ -71,6 +71,10 @@ Azure Cosmos DB's API for MongoDB supports three types of Indexes:
 
 **Next step**:
 We could create Compound Indexes using the SDK and check whether we could further optimize the RU.
-  
+ 
+``` db.products.createIndex({CategoryName:1,Sku:1,Name:1,Description:1,Price:1}) ```
+``` db.products.createIndex({CategoryName:1,Description:1}) ```
+``` db.products.createIndex({Description:1}) ```
+
 **Summary**:
-This document showcases how you could optimize Query RU consumption in Azure Cosmos DB's API for MongoDB. 
+This document showcases how you could optimize Query RU consumption in Azure Cosmos DB's API for MongoDB.
