@@ -25,7 +25,7 @@ If your Query's RU is too high, then you should investigate further to understan
 mongoimport --host <HOST>:<PORT> -u <USERNAME> -p <PASSWORD> --db cosmicworks --collection products --ssl --jsonArray --writeConcern="{w:0}" --file Data/products.json
 ```
 
-- *Step2:* After successfully uploading the data, you visit Data Explorer and check your documents have been successfully loaded. Your screen should look like as shown below. I have opened the 1st document and it has the attributes: CategoryName, Sku, Name, Description & Price.
+- *Step2:* After successfully uploading the data, you should access your Cosmos DB account in the Azure portal, navigate to the Data Explorer and check your documents have been successfully loaded. Your screen should look like as shown below. I have opened the 1st document and it has the attributes: CategoryName, Sku, Name, Description & Price.
 
 ![Image01](media/start.png)
 
