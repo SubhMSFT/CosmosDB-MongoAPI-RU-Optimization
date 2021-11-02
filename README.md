@@ -1,5 +1,5 @@
-# Azure Cosmos DB API for MongoDB Query RU Consumption
-Optimizing Azure Cosmos DB API for MongoDB Query RU Consumption by virtue of Indexing Changes
+# Optimizing Cosmos DB API for MongoDB Query RU Consumption
+Optimizing Azure Cosmos DB API for MongoDB Query RU Consumption by virtue of Indexing Changes using the Azure portal.
 
 The Azure Cosmos DB API for MongoDB makes it easy to use Microsoft's premier NoSQL database, Azure Cosmos DB as if it were a MongoDB database. You can leverage your MongoDB experience and continue to use your favorite MongoDB drivers, SDKs, and tools by pointing your application to the API for MongoDB account's connection string. Visit [here](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-introduction) for getting started with Azure Cosmos DB API for MongoDB.
 
@@ -23,5 +23,31 @@ If your Query's RU is too high, then you should investigate further to understan
 mongoimport --host <HOST>:<PORT> -u <USERNAME> -p <PASSWORD> --db cosmicworks --collection products --ssl --jsonArray --writeConcern="{w:0}" --file Data/products.json
 ```
 
-- Step2: 
+- Step2: After successfully uploading the data, you visit Data Explorer and check your documents have been successfully loaded. Your screen should look like as shown below. I have opened the 1st document and it has the attributes: CategoryName, Sku, Name, Description & Price.
+
+![Image01](media/start.png)
+
+- Step2: I wish to perform a logical AND operation on an array of one or more expressions (<expression1>, <expression2>, and so on). The query, if correctly executed, should select the documents that satisfy all the expressions. Click on the ">_ New Shell" button which opens up a Mongo Shell.
+```
+db.products.find({$and:[{"CategoryName" : "Accessories, Bottles and Cages"},{"Sku" : "BC-M005"},{"Name" : "Mountain Bottle Cage"},{"Description" : "The product called \"Mountain Bottle Cage\""},{"Price" : 9.99}]})
+```
+This generates the output of 1 document which costs: 20.05 RUs. If we check the 'Indexing Policy' it is set to a [b]Single Field[/b] value; i.e. _id = Single Field.
 ![Image1](media/1.png)
+
+- Step3: We wish to optimize the query RU consumption. Visit 'Indexing Policy' and set CategoryName = SingleField. This creates an Index on the named field.
+This generates the output of 1 document which costs: 7.32 RUs.
+![Image2](media/2.png)
+  
+- Step3: We wish to optimize further for RU consumption. Visit 'Indexing Policy' and add Description = SingleField. This creates an Index on the named field.
+This generates the output of 1 document which costs: 7.25 RUs.
+![Image3](media/3.png)
+  
+- Step4: We wish to optimize further for RU consumption. Visit 'Indexing Policy' and delete both the 2 'Singe Field' indexes and add a new 'Wildcard' Index to the container, i.e. CategoryName.$**. This creates a Wildcard Index on the CategoryName attribute.
+This generates the output of 1 document which costs: 6.27 RUs.
+![Image4](media/4.png)
+  
+- Step5: Can this be further RU Optimized? Visit 'Indexing Policy' and add a new 'Wildcard' Index to the container, i.e. Description.$**. This creates a Wildcard Index on the Description attribute.
+This generates the output of 1 document which costs: 3.15 RUs.
+![Image5](media/5.png)
+  
+  
