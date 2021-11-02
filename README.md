@@ -72,9 +72,15 @@ Azure Cosmos DB's API for MongoDB supports three types of Indexes:
 **Next step**:
 We could create Compound Indexes using the SDK and check whether we could further optimize the RU.
  
-``` db.products.createIndex({CategoryName:1,Sku:1,Name:1,Description:1,Price:1}) ```
-``` db.products.createIndex({CategoryName:1,Description:1}) ```
-``` db.products.createIndex({Description:1}) ```
+```
+db.products.createIndex({CategoryName:1,Sku:1,Name:1,Description:1,Price:1})
+```
+```
+db.products.createIndex({CategoryName:1,Description:1})
+```
+```
+db.products.createIndex({Description:1})
+```
 
 **Summary**:
 This document showcases how you could optimize Query RU consumption in Azure Cosmos DB's API for MongoDB.
