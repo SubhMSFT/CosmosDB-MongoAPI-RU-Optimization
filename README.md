@@ -64,13 +64,14 @@ _id, CategoryName.$**, Description.$**  | 3.15
 
 **Types of Indexes**:
 Azure Cosmos DB's API for MongoDB supports three types of Indexes:
-  1. **[Single Field]**(https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-indexing#single-field) Indexes, supported creating using the Azure portal.
-  2. **[Wildcard]**(https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-indexing#wildcard-indexes) Indexes, supported creating using Azure portal. Check this link for limitations of creating Wildcard indexes 
+  1. **[Single Field](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-indexing#single-field)** Indexes, supported creating using the Azure portal.
+  2. **[Wildcard](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-indexing#wildcard-indexes)** Indexes, supported creating using Azure portal. Check this link for limitations of creating Wildcard indexes 
   3. **[Compound Indexes]**(https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-indexing#compound-indexes-mongodb-server-version-36), currently not supported creation using Azure portal. You shall need to build either using .NET / Java SDK or your favorite Mongo tool.
 
 **Next step**:
-We could create Compound Indexes using the SDK and check whether we could further optimize the RU.
- 
+HomeWork: Using .NET/Java SDK you can create 'Compound MongoDB Indexes' and test scenarios wherein we could further optimize 'Query RU'.
+
+Hints: Indexes to be tested >
 ```
 db.products.createIndex({CategoryName:1,Sku:1,Name:1,Description:1,Price:1})
 ```
