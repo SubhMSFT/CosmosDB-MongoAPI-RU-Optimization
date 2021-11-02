@@ -48,8 +48,10 @@ This generates the output of 1 document which costs: 7.25 RUs.
 This generates the output of 1 document which costs: 6.27 RUs.
 ![Image4](media/4.png)
   
-- Step5: Can this be further RU Optimized? Visit 'Indexing Policy' and add a new 'Wildcard' Index to the container, i.e. Description.$**. This creates a Wildcard Index on the Description attribute.
+- *Step5*: Can this be further RU Optimized? Visit 'Indexing Policy' and add a new 'Wildcard' Index to the container, i.e. Description.$**. This creates a Wildcard Index on the Description attribute.
 This generates the output of 1 document which costs: 3.15 RUs.
 ![Image5](media/5.png)
+  
+ 
   
   
