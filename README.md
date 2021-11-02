@@ -1,6 +1,8 @@
 # Optimizing Cosmos DB API for MongoDB Query RU Consumption
 Optimizing Azure Cosmos DB API for MongoDB Query RU Consumption by virtue of Indexing Changes using the Azure portal.
 
+![Image02](media/cosmoslogo.png)
+
 The Azure Cosmos DB API for MongoDB makes it easy to use Microsoft's premier NoSQL database, Azure Cosmos DB as if it were a MongoDB database. You can leverage your MongoDB experience and continue to use your favorite MongoDB drivers, SDKs, and tools by pointing your application to the API for MongoDB account's connection string. Visit [here](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-introduction) for getting started with Azure Cosmos DB API for MongoDB.
 
 **How do I find the request unit charge for operations executed in Azure Cosmos DB API for MongoDB**
