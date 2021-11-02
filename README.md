@@ -52,6 +52,13 @@ This generates the output of 1 document which costs: 6.27 RUs.
 This generates the output of 1 document which costs: 3.15 RUs.
 ![Image5](media/5.png)
   
+In short, we have been able to successfully bring down Query RU consumption from 20 RUs to 3 RUs, just by tweaking Single Field & Wildcard Indexes.
+  
+**Types of Indexes**:
+Azure Cosmos DB's API for MongoDB supports three types of Indexes:
+  1. Single Field Indexes, supported using Azure portal.
+  2. Wildcard Indexes, supported using Azure portal.
+  3. Compound Indexes, currently not supported creation using Azure portal. You shall need to build either using .NET / Java SDK or your favorite Mongo tool.
+
+**Summary**:
  
-  
-  
