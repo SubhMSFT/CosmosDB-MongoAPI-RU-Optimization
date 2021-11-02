@@ -48,17 +48,25 @@ This generates the output of 1 document which costs: 7.25 RUs.
 This generates the output of 1 document which costs: 6.27 RUs.
 ![Image4](media/4.png)
   
-- *Step7*: Can this be further RU Optimized? Visit 'Indexing Policy' and add a new 'Wildcard' Index to the container, i.e. Description.$**. This creates a Wildcard Index on the Description attribute.
+- *Step7:* Can this be further RU Optimized? Visit 'Indexing Policy' and add a new 'Wildcard' Index to the container, i.e. Description.$**. This creates a Wildcard Index on the Description attribute.
 This generates the output of 1 document which costs: 3.15 RUs.
 ![Image5](media/5.png)
   
 In short, we have been able to successfully bring down Query RU consumption from 20 RUs to 3 RUs, just by tweaking Single Field & Wildcard Indexes.
-  
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+   
 **Types of Indexes**:
 Azure Cosmos DB's API for MongoDB supports three types of Indexes:
-  1. Single Field Indexes, supported using Azure portal.
-  2. Wildcard Indexes, supported using Azure portal.
-  3. Compound Indexes, currently not supported creation using Azure portal. You shall need to build either using .NET / Java SDK or your favorite Mongo tool.
+  1. **[Single Field]**(https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-indexing#single-field) Indexes, supported creating using the Azure portal.
+  2. **[Wildcard]**(https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-indexing#wildcard-indexes) Indexes, supported creating using Azure portal. Check this link for limitations of creating Wildcard indexes 
+  3. **[Compound Indexes]**(https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-indexing#compound-indexes-mongodb-server-version-36), currently not supported creation using Azure portal. You shall need to build either using .NET / Java SDK or your favorite Mongo tool.
 
+**Next step**:
+We could create Compound Indexes using the SDK and check whether we could further optimize the RU.
+  
 **Summary**:
- 
+This document showcases how you could optimize Query RU consumption in Azure Cosmos DB's API for MongoDB. 
