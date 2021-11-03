@@ -60,7 +60,7 @@ _id  | 20.05
 _id, CategoryName  | 7.32
 _id, CategoryName, Description  | 7.25
 _id, CategoryName.$**  | 6.27
-_id, CategoryName.$**, Description.$**  | 3.15
+_id, CategoryName.$****, Description.$****  | 3.15
 
 ## Types of Indexes
 Azure Cosmos DB's API for MongoDB supports three types of Indexes:
